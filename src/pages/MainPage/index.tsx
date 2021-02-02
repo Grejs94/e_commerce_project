@@ -1,11 +1,11 @@
 import React from "react";
 
-import { ExampleInputs } from "./components";
+import { MainMenu } from "./components";
 
 const MainPage: React.FC = () => {
   return (
     <div>
-      <ExampleInputs />
+      <MainMenu />
     </div>
   );
 };

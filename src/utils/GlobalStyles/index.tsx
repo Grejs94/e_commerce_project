@@ -13,7 +13,7 @@ const GlobalStyles: React.FC = () => {
           margin: 0;
           background: white;
           min-height: 100%;
-          font-family: Helvetica, Arial, sans-serif;
+          font-family: Roboto, sans-serif;
         }
       `}
     />

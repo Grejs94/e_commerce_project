@@ -13,6 +13,7 @@ export const media = {
 export const colors = {
   black: "black",
   white: "white",
+  orange: "#ff5a00",
 };
 
 export type FontSize =

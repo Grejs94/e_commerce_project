@@ -1,3 +1,3 @@
-import ExampleInputs from "./ExampleInputs/index";
+import MainMenu from "./MainMenu/index";
 
-export { ExampleInputs };
+export { MainMenu };
