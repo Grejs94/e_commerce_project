@@ -1,3 +1,4 @@
-import CustomInput from "./CustomInput/index";
+import CategoriesList from "./CategoriesList/index";
+import TopBar from "./TopBar/index";
 
-export { CustomInput };
+export { CategoriesList, TopBar };

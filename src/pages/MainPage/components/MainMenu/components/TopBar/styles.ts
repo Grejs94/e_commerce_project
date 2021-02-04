@@ -11,9 +11,10 @@ type BarsProps = {
   display: string;
 };
 
+///// DefaultVariantBar components
+
 const barsCss = `
 min-height: 50px;
-background-color: pink;
 align-items:center;
 padding: 0 10px;
 `;
@@ -22,7 +23,8 @@ export const DefaultVariantBar = styled.div<BarsProps>`
   display: ${(props: BarsProps) =>
     props.display === "openDefaultVariantBar" ? "flex" : "none"};
   justify-content: space-between;
-  ${barsCss}
+  ${barsCss};
+  background-color: white;
 `;
 
 export const Title = styled.p`
@@ -51,6 +53,7 @@ export const SearchVariantBar = styled.div<BarsProps>`
     props.display === "openDefaultVariantBar" ? "none" : "flex"};
   justify-content: center;
   ${barsCss}
+  background-color: white;
 `;
 
 export const ArrowBackIcon = styled(ArrowBackIconMaterial)`
@@ -59,6 +62,4 @@ export const ArrowBackIcon = styled(ArrowBackIconMaterial)`
   color: rgba(0, 0, 0, 0.54);
 `;
 
-export const Input = styled.input``;
-
-export const Wrapper = styled.div``;
+//// Else components

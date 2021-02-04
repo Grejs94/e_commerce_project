@@ -1,3 +1,3 @@
-import example from "./example/index";
+import products from "./products/index";
 
-export { example };
+export { products };

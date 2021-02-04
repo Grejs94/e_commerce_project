@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { example } from "features";
+import { products } from "features";
 
 export default configureStore({
   reducer: {
-    example,
+    products,
   },
 });

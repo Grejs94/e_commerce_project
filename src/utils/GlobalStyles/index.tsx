@@ -2,6 +2,10 @@ import React from "react";
 import { Global, css } from "@emotion/react";
 import emotionNormalize from "emotion-normalize";
 
+import { theme } from "assets/theme";
+
+const { colors } = theme;
+
 const GlobalStyles: React.FC = () => {
   return (
     <Global
@@ -11,7 +15,7 @@ const GlobalStyles: React.FC = () => {
    body {
           padding: 0;
           margin: 0;
-          background: white;
+          background: ${colors.gray_background};
           min-height: 100%;
           font-family: Roboto, sans-serif;
         }

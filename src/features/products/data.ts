@@ -1,4 +1,5 @@
 export const initialState = {
-  value: 2,
+  products: [],
+  categories: [],
   dataStatus: "iddle",
 };

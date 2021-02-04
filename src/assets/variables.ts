@@ -14,6 +14,7 @@ export const colors = {
   black: "black",
   white: "white",
   orange: "#ff5a00",
+  gray_background: "#eceff1",
 };
 
 export type FontSize =

@@ -3,6 +3,16 @@ import PaperMaterial from "@material-ui/core/Paper";
 import IconButtonMaterial from "@material-ui/core/IconButton";
 import DividerMaterial from "@material-ui/core/Divider";
 import InputBaseMaterial from "@material-ui/core/InputBase";
+import SearchIconMaterial from "@material-ui/icons/Search";
+
+import { theme } from "assets/theme";
+
+const { colors } = theme;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 export const Paper = styled(PaperMaterial)`
   display: flex;
@@ -24,6 +34,12 @@ export const Divider = styled(DividerMaterial)`
 `;
 
 export const InputBase = styled(InputBaseMaterial)`
-  margin-left: 8px;
-  flex: 1;
+  && {
+    margin-left: 8px;
+    flex: 1;
+  }
+`;
+
+export const SearchIcon = styled(SearchIconMaterial)`
+  color: ${colors.orange};
 `;
