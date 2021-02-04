@@ -1,4 +1,6 @@
-import MainMenu from "./MainMenu/index";
 import Carousel from "./Carousel/index";
 
-export { MainMenu, Carousel };
+import SearchContent from "./SearchContent/index";
+import HomePageContent from "./HomePageContent/index";
+
+export { Carousel, SearchContent, HomePageContent };

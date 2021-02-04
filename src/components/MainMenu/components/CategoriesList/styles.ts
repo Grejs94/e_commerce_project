@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
   align-items: center;
   background-color: white;
+  min-height: 16px;
 `;
 
 export const Element = styled.div`

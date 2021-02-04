@@ -4,7 +4,7 @@ const mainRoutes = [
   {
     path: "/",
     component: MainPage,
-    exact: true,
+    exact: false,
   },
 ];
 

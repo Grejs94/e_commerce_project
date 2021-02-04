@@ -16,7 +16,6 @@ type BarsProps = {
 const barsCss = `
 min-height: 50px;
 align-items:center;
-padding: 0 10px;
 `;
 
 export const DefaultVariantBar = styled.div<BarsProps>`
@@ -25,6 +24,7 @@ export const DefaultVariantBar = styled.div<BarsProps>`
   justify-content: space-between;
   ${barsCss};
   background-color: white;
+  padding: 0 10px;
 `;
 
 export const Title = styled.p`
@@ -54,6 +54,7 @@ export const SearchVariantBar = styled.div<BarsProps>`
   justify-content: center;
   ${barsCss}
   background-color: white;
+  padding: 0 20px 0 10px;
 `;
 
 export const ArrowBackIcon = styled(ArrowBackIconMaterial)`

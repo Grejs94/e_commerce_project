@@ -2,12 +2,14 @@ import React from "react";
 
 import { CategoriesList, TopBar } from "./components";
 
-type Props = {};
+type Props = {
+  propsVariant: string;
+};
 
-const MainMenu: React.FC<Props> = () => {
+const MainMenu: React.FC<Props> = ({ propsVariant }) => {
   return (
     <div>
-      <TopBar />
+      <TopBar propsVariant={propsVariant} />
       <CategoriesList />
     </div>
   );

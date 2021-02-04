@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import * as Styles from "./styles";
 import { CustomInput } from "./components/index";
 
-const TopBar: React.FC = () => {
+type Props = {
+  propsVariant: string;
+};
+
+const TopBar: React.FC<Props> = ({ propsVariant }) => {
   const [variant, setVariant] = useState("openDefaultVariantBar");
+
+  useEffect(() => {
+    setVariant(propsVariant);
+  }, [propsVariant, setVariant]);
 
   const toggleVariantBar = () => {
     if (variant === "openDefaultVariantBar") {
@@ -27,12 +35,10 @@ const TopBar: React.FC = () => {
           </div>
         </Styles.DefaultVariantBar>
       ) : (
-        <div>
-          <Styles.SearchVariantBar display={variant}>
-            <Styles.ArrowBackIcon onClick={toggleVariantBar} />
-            <CustomInput />
-          </Styles.SearchVariantBar>
-        </div>
+        <Styles.SearchVariantBar display={variant}>
+          <Styles.ArrowBackIcon onClick={toggleVariantBar} />
+          <CustomInput />
+        </Styles.SearchVariantBar>
       )}
     </div>
   );

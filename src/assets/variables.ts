@@ -15,6 +15,7 @@ export const colors = {
   white: "white",
   orange: "#ff5a00",
   gray_background: "#eceff1",
+  gray_text: "#767676",
 };
 
 export type FontSize =

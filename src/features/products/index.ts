@@ -35,11 +35,11 @@ export const {
   setProductsCategories,
 } = groceriesSlice.actions;
 
-export const fetchProducts = () => async (dispatch: Dispatch) => {
+export const fetchProductsCategories = () => async (dispatch: Dispatch) => {
   dispatch(fetchDataStarted());
   try {
-    const products = await api.products.getProducts();
-    dispatch(setProducts(products));
+    // const products = await api.products.getProducts();
+    // dispatch(setProducts(products));
 
     const productsCategories = await api.products.getProductsCategories();
     dispatch(setProductsCategories(productsCategories));

@@ -18,7 +18,6 @@ const App: React.FC = () => {
               component={route.component}
             />
           ))}
-          add variables and theme @material-ui/core add custom material button
         </Switch>
       </Wrapper>
     </Router>

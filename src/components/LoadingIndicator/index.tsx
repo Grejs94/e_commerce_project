@@ -10,8 +10,8 @@ const LoadingIndicator: React.FC = () => {
     <Loader
       type="TailSpin"
       color={colors.orange}
-      height={50}
-      width={50}
+      height={16}
+      width={16}
       timeout={3000}
     />
   );
