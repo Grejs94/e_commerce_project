@@ -18,8 +18,6 @@ const SearchInfo: React.FC<Props> = () => {
   const searchCategory = useSelector(selectSearchCategory);
   const elements = useSelector(selectItemsFound);
 
-  console.log(elements);
-
   return (
     <Styles.Wrapper>
       <Styles.SearchingContents>{searchElement}</Styles.SearchingContents>

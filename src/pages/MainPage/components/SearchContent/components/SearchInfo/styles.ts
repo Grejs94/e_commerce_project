@@ -7,6 +7,7 @@ const { colors, font } = theme;
 export const Wrapper = styled.div`
   padding: 15px;
   text-align: left;
+  background-color: ${colors.gray_background};
 `;
 
 export const SearchingContents = styled.p`

@@ -1,4 +1,5 @@
 import React from "react";
+
 type Props = {};
 
 const Sorting: React.FC<Props> = () => {

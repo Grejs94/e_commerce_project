@@ -15,7 +15,7 @@ const GlobalStyles: React.FC = () => {
    body {
           padding: 0;
           margin: 0;
-          background: ${colors.gray_background};
+          background: ${colors.white};
           min-height: 100%;
           font-family: Roboto, sans-serif;
         }

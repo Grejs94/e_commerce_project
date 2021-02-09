@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { Dispatch } from "redux";
 
 import api from "api";
+import { Item } from "interfaces/index";
 
 import { initialState } from "./data";
 
@@ -80,7 +81,64 @@ export const fetchSpecificCategory = (category: string) => async (
   dispatch(fetchSearchElementStatusStarted());
   try {
     const productsCategories = await api.products.getSpecificCategory(category);
-    dispatch(setItemsFound(productsCategories));
+
+    const changedProducts = productsCategories.map((item: Item) => {
+      // set random visible logic to: supply time, super seller and smart supply
+
+      let supplyVisible = false;
+      let smart = false;
+      let greatSeller = false;
+
+      const supplyRand = Math.random();
+      const smartRand = Math.random();
+      const greatSellerRand = Math.random();
+
+      const setRandomElements = () => {
+        if (supplyRand < 0.5) {
+          supplyVisible = true;
+        } else {
+          return;
+        }
+
+        if (smartRand < 0.5) {
+          smart = true;
+        } else {
+          return;
+        }
+
+        if (greatSellerRand < 0.5) {
+          greatSeller = true;
+        } else {
+          return;
+        }
+      };
+      setRandomElements();
+
+      // set random supplyTime logic
+
+      let supplyTime = 0;
+
+      if (supplyVisible) {
+        const supplyTimeRand = Math.random();
+
+        if (supplyTimeRand < 0.5) {
+          supplyTime = 1;
+        } else {
+          supplyTime = 2;
+        }
+      }
+
+      return {
+        ...item,
+        showButton: true,
+        supplyInfo: supplyVisible,
+        supplyTime: supplyTime,
+        smart,
+        greatSeller,
+      };
+    });
+
+    dispatch(setItemsFound(changedProducts));
     dispatch(setSearchElement(category));
     dispatch(setSearchCategory(category));
 

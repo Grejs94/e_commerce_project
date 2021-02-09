@@ -3,14 +3,18 @@ import Loader from "react-loader-spinner";
 
 import { theme } from "assets/theme";
 
-const LoadingIndicator: React.FC = () => {
+type props = {
+  height?: number;
+};
+
+const LoadingIndicator: React.FC<props> = ({ height }) => {
   const { colors } = theme;
 
   return (
     <Loader
       type="TailSpin"
       color={colors.orange}
-      height={16}
+      height={height ? height : 16}
       width={16}
       timeout={3000}
     />

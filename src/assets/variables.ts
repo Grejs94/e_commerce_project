@@ -1,5 +1,5 @@
 const mediaQ = (size: number): string =>
-  `@media only screen and (max-width: ${size}px)`;
+  `@media only screen and (min-width: ${size}px)`;
 
 export const media = {
   xs: mediaQ(380),
