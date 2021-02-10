@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectItemsFound, setItemsFound } from "features/products/index";
 import { IChangedItem } from "interfaces/index";
 import { LoadingIndicator } from "components";
+import { formatToPln } from "utils/moneyFormat";
 
 import * as Styles from "./styles";
 
@@ -13,13 +14,10 @@ const ProductsList: React.FC<Props> = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectItemsFound);
 
-  console.log(items);
-
   return (
     <div>
       {items.map((item: IChangedItem) => {
         // handle item price display method because API price is very bad eg. (11 ; 11.99; 11.9) several formats!!!
-        console.log(item);
 
         let price = { beforeComma: "0", afterComma: "0" };
 
@@ -82,6 +80,22 @@ const ProductsList: React.FC<Props> = () => {
           return null;
         };
 
+        const GreatSeller = () => {
+          if (item.greatSeller) {
+            return (
+              <Styles.greatSellerContainer>
+                od
+                <Styles.greatSellerImageContainer>
+                  <Styles.Image src="https://assets.allegrostatic.com/metrum/icon/super-seller-af2bec0d44.svg" />
+                </Styles.greatSellerImageContainer>
+                Super Sprzedawcy
+              </Styles.greatSellerContainer>
+            );
+          }
+
+          return null;
+        };
+
         return (
           <Styles.ItemContainer key={item.id}>
             <Styles.ImageContainer>
@@ -89,6 +103,7 @@ const ProductsList: React.FC<Props> = () => {
             </Styles.ImageContainer>
             <Styles.InfoContainer>
               <p>{item.title}</p>
+              <GreatSeller />
               <Styles.PriceContainer>
                 <Styles.PriceBeforeComma>
                   {`${price.beforeComma},`}
@@ -98,13 +113,15 @@ const ProductsList: React.FC<Props> = () => {
                 </Styles.PriceBeforeComma>
                 {item.smart && (
                   <Styles.SmartContainer>
-                    <Styles.SmartImage src="https://assets.allegrostatic.com/freebox/icons/FREEBOX_NOMARGIN.svg" />
+                    <Styles.Image src="https://assets.allegrostatic.com/freebox/icons/FREEBOX_NOMARGIN.svg" />
                   </Styles.SmartContainer>
                 )}
               </Styles.PriceContainer>
               <div>
                 <Styles.GrayInfo>33 osoby kupiły</Styles.GrayInfo>
-                <Styles.GrayInfo>18,99 zł z dostawą</Styles.GrayInfo>
+                <Styles.GrayInfo>
+                  {`${formatToPln(item.deliveryCost)} z dostawą`}
+                </Styles.GrayInfo>
                 <SupplyInfo />
               </div>
               <Styles.ButtonContainer>

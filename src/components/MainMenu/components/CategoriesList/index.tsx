@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 
 import { fetchSpecificCategory } from "features/products/index";
 import {
@@ -21,18 +20,8 @@ const CategoriesList: React.FC<Props> = () => {
   const categoriesStatus = useSelector(selectProductsStatus);
   const data = categoriesStatus;
 
-  const cookie = Cookies.get("searchElement");
-
-  useEffect(() => {
-    if (cookie) {
-      dispatch(fetchSpecificCategory(cookie));
-    }
-  }, []);
-
   const fetchData = (fetchedCategory: string) => {
-    Cookies.set("searchElement", `${fetchedCategory}`);
     dispatch(fetchSpecificCategory(fetchedCategory));
-    // dispatch(selectSearchCategory(fetchedCategory));
   };
 
   if (data === "iddle" || data === "inProgress") {

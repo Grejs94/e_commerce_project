@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Dispatch } from "redux";
+import Cookies from "js-cookie";
 
 import api from "api";
 import { Item } from "interfaces/index";
@@ -28,6 +29,9 @@ export const groceriesSlice = createSlice({
     fetchSearchElementStatusFailed: (state) => {
       state.searchElementStatus = "failed";
     },
+    setSearchElementStatusSucceededByCookies: (state) => {
+      state.searchElementStatus = "succeeded";
+    },
     setProducts: (state, action) => {
       state.products = action.payload;
     },
@@ -42,6 +46,13 @@ export const groceriesSlice = createSlice({
     },
     setSearchCategory: (state, action) => {
       state.searchCategory = action.payload;
+    },
+    setUsingCookies: (state, action) => {
+      const { itemsFound, search } = action.payload;
+
+      state.itemsFound = itemsFound;
+      state.searchElement = search;
+      state.searchCategory = search;
     },
   },
 });
@@ -58,6 +69,8 @@ export const {
   setItemsFound,
   setSearchElement,
   setSearchCategory,
+  setUsingCookies,
+  setSearchElementStatusSucceededByCookies,
 } = groceriesSlice.actions;
 
 export const fetchProductsCategories = () => async (dispatch: Dispatch) => {
@@ -80,67 +93,86 @@ export const fetchSpecificCategory = (category: string) => async (
 ) => {
   dispatch(fetchSearchElementStatusStarted());
   try {
-    const productsCategories = await api.products.getSpecificCategory(category);
+    const specificCategoryItems = await api.products.getSpecificCategory(
+      category
+    );
 
-    const changedProducts = productsCategories.map((item: Item) => {
-      // set random visible logic to: supply time, super seller and smart supply
+    const expandedItems = specificCategoryItems.map((item: Item) => {
+      // add aditional data created randomly
 
-      let supplyVisible = false;
+      let supplyInfo = false;
       let smart = false;
       let greatSeller = false;
+      let supplyTime = 0;
+      let deliveryCost = 8.99;
 
-      const supplyRand = Math.random();
-      const smartRand = Math.random();
-      const greatSellerRand = Math.random();
+      const supplyRand = Math.random() > 0.4;
+      const smartRand = Math.random() > 0.4;
+      const greatSellerRand = Math.random() > 0.4;
+      const deliveryCostSmall = Math.random() > 0.4;
+      const deliveryCostBig = Math.random() > 0.4;
 
-      const setRandomElements = () => {
-        if (supplyRand < 0.5) {
-          supplyVisible = true;
+      const addAdditionalRandomData = () => {
+        if (supplyRand) {
+          supplyInfo = true;
         } else {
           return;
         }
 
-        if (smartRand < 0.5) {
+        if (smartRand) {
           smart = true;
         } else {
           return;
         }
 
-        if (greatSellerRand < 0.5) {
+        if (greatSellerRand) {
           greatSeller = true;
         } else {
           return;
         }
-      };
-      setRandomElements();
 
-      // set random supplyTime logic
+        if (supplyInfo) {
+          const supplyTimeRand = Math.random() > 0.5;
 
-      let supplyTime = 0;
-
-      if (supplyVisible) {
-        const supplyTimeRand = Math.random();
-
-        if (supplyTimeRand < 0.5) {
-          supplyTime = 1;
-        } else {
-          supplyTime = 2;
+          if (supplyTimeRand) {
+            supplyTime = 1;
+          } else {
+            supplyTime = 2;
+          }
         }
-      }
+
+        if (deliveryCostSmall) {
+          deliveryCost = 12.99;
+        }
+
+        if (deliveryCostBig) {
+          deliveryCost = 16.99;
+        }
+      };
+      addAdditionalRandomData();
 
       return {
         ...item,
         showButton: true,
-        supplyInfo: supplyVisible,
-        supplyTime: supplyTime,
+        supplyInfo,
+        supplyTime,
         smart,
+        deliveryCost,
         greatSeller,
       };
     });
 
-    dispatch(setItemsFound(changedProducts));
+    dispatch(setItemsFound(expandedItems));
     dispatch(setSearchElement(category));
     dispatch(setSearchCategory(category));
+
+    // setCookies
+
+    const itemsInJson = JSON.stringify(expandedItems);
+
+    // here is bug electronics and women clothing categorys dont treeger Cookies.set in itemsFound WTH. Maybe roblem with underdeveloped API like several price format for eg.?
+    Cookies.set("searchElement", `${category}`);
+    Cookies.set("itemsFound", `${itemsInJson}`);
 
     dispatch(fetchSearchElementStatusSucceeded());
   } catch (error) {

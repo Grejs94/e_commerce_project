@@ -11,6 +11,7 @@ const products = {
   },
   getSpecificCategory: async (categoryName: string) => {
     const res = await fetch(`${config.url}/products/category/${categoryName}`);
+
     return await res.json();
   },
 };

@@ -19,4 +19,5 @@ export interface IChangedItem {
   supplyInfo: boolean;
   smart: boolean;
   greatSeller: boolean;
+  deliveryCost: number;
 }

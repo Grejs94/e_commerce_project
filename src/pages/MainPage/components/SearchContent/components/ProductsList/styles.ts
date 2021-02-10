@@ -19,9 +19,6 @@ export const ImageContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  //   height: 100%;
-  //   width: auto;
-
   width: 100%;
   height: auto;
 `;
@@ -35,6 +32,16 @@ export const InfoContainer = styled.div`
   p {
     margin: 0;
   }
+`;
+
+export const greatSellerContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const greatSellerImageContainer = styled.div`
+  width: 25px;
+  padding: 5px;
 `;
 
 export const PriceContainer = styled.div`
@@ -56,11 +63,6 @@ export const SmartContainer = styled.div`
   display: flex;
   max-width: 90px;
   margin-left: 10px;
-`;
-
-export const SmartImage = styled.img`
-  width: 100%;
-  height: auto;
 `;
 
 // additional info component
