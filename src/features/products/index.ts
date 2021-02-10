@@ -84,6 +84,8 @@ export const fetchProductsCategories = () => async (dispatch: Dispatch) => {
 
     dispatch(fetchDataSucceeded());
   } catch (error) {
+    console.log(error);
+
     dispatch(fetchDataFailed());
   }
 };
@@ -162,20 +164,25 @@ export const fetchSpecificCategory = (category: string) => async (
       };
     });
 
-    dispatch(setItemsFound(expandedItems));
+    // if I had not reduced the size, the cookie would not have been saved because it was too large (RFC 6265)
+    // https://github.com/js-cookie/js-cookie#encoding
+    const slicedItems = expandedItems.slice(0, 4);
+
+    dispatch(setItemsFound(slicedItems));
     dispatch(setSearchElement(category));
     dispatch(setSearchCategory(category));
 
     // setCookies
 
-    const itemsInJson = JSON.stringify(expandedItems);
+    const itemsInJson = JSON.stringify(slicedItems);
 
-    // here is bug electronics and women clothing categorys dont treeger Cookies.set in itemsFound WTH. Maybe roblem with underdeveloped API like several price format for eg.?
     Cookies.set("searchElement", `${category}`);
     Cookies.set("itemsFound", `${itemsInJson}`);
 
     dispatch(fetchSearchElementStatusSucceeded());
   } catch (error) {
+    console.log(error);
+
     dispatch(fetchSearchElementStatusFailed());
   }
 };
