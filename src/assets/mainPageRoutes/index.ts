@@ -1,4 +1,5 @@
 import { SearchContent, HomePageContent } from "pages/MainPage/components";
+import { ItemPage } from "pages/index";
 
 const mainPageRoutes = [
   {
@@ -9,6 +10,11 @@ const mainPageRoutes = [
   {
     path: "/search",
     component: SearchContent,
+    exact: false,
+  },
+  {
+    path: "/item",
+    component: ItemPage,
     exact: false,
   },
 ];

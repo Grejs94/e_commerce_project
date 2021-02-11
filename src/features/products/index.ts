@@ -54,6 +54,9 @@ export const groceriesSlice = createSlice({
       state.searchElement = search;
       state.searchCategory = search;
     },
+    setDisplayedItem: (state, action) => {
+      state.displayedItem = action.payload;
+    },
   },
 });
 
@@ -71,14 +74,12 @@ export const {
   setSearchCategory,
   setUsingCookies,
   setSearchElementStatusSucceededByCookies,
+  setDisplayedItem,
 } = groceriesSlice.actions;
 
 export const fetchProductsCategories = () => async (dispatch: Dispatch) => {
   dispatch(fetchDataStarted());
   try {
-    // const products = await api.products.getProducts();
-    // dispatch(setProducts(products));
-
     const productsCategories = await api.products.getProductsCategories();
     dispatch(setProductsCategories(productsCategories));
 
@@ -107,12 +108,11 @@ export const fetchSpecificCategory = (category: string) => async (
       let greatSeller = false;
       let supplyTime = 0;
       let deliveryCost = 8.99;
+      let peopleWhoBought = Math.floor(Math.random() * 10);
 
       const supplyRand = Math.random() > 0.4;
       const smartRand = Math.random() > 0.4;
       const greatSellerRand = Math.random() > 0.4;
-      const deliveryCostSmall = Math.random() > 0.4;
-      const deliveryCostBig = Math.random() > 0.4;
 
       const addAdditionalRandomData = () => {
         if (supplyRand) {
@@ -142,14 +142,6 @@ export const fetchSpecificCategory = (category: string) => async (
             supplyTime = 2;
           }
         }
-
-        if (deliveryCostSmall) {
-          deliveryCost = 12.99;
-        }
-
-        if (deliveryCostBig) {
-          deliveryCost = 16.99;
-        }
       };
       addAdditionalRandomData();
 
@@ -161,6 +153,7 @@ export const fetchSpecificCategory = (category: string) => async (
         smart,
         deliveryCost,
         greatSeller,
+        peopleWhoBought,
       };
     });
 

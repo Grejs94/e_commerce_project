@@ -20,4 +20,5 @@ export interface IChangedItem {
   smart: boolean;
   greatSeller: boolean;
   deliveryCost: number;
+  peopleWhoBought: number;
 }

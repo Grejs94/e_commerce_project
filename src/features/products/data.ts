@@ -6,4 +6,5 @@ export const initialState = {
   searchElementStatus: "iddle",
   itemsFound: "",
   searchCategory: "",
+  displayedItem: "",
 };

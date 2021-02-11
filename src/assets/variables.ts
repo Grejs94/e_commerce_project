@@ -1,3 +1,5 @@
+import blue from "@material-ui/core/colors/blue";
+
 const mediaQ = (size: number): string =>
   `@media only screen and (min-width: ${size}px)`;
 
@@ -16,6 +18,7 @@ export const colors = {
   orange: "#ff5a00",
   gray_background: "#eceff1",
   gray_text: "#767676",
+  blue_link: blue[500],
 };
 
 export type FontSize =

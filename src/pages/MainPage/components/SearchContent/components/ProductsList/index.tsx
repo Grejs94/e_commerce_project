@@ -1,9 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { selectItemsFound, setItemsFound } from "features/products/index";
+import {
+  selectItemsFound,
+  setItemsFound,
+  setDisplayedItem,
+} from "features/products/index";
 import { IChangedItem } from "interfaces/index";
-import { LoadingIndicator } from "components";
+import { LoadingIndicator, Link } from "components";
 import { formatToPln } from "utils/moneyFormat";
 
 import * as Styles from "./styles";
@@ -96,13 +100,22 @@ const ProductsList: React.FC<Props> = () => {
           return null;
         };
 
+        const handleSetDisplayedItem = (item: IChangedItem) => {
+          dispatch(setDisplayedItem(item));
+        };
+
         return (
           <Styles.ItemContainer key={item.id}>
             <Styles.ImageContainer>
               <Styles.Image src={item.image} />
             </Styles.ImageContainer>
             <Styles.InfoContainer>
-              <p>{item.title}</p>
+              <Link
+                to={`/item/id=${item.id}`}
+                handleclick={() => handleSetDisplayedItem(item)}
+              >
+                <Styles.ItemTitle>{item.title}</Styles.ItemTitle>
+              </Link>
               <GreatSeller />
               <Styles.PriceContainer>
                 <Styles.PriceBeforeComma>
@@ -118,9 +131,15 @@ const ProductsList: React.FC<Props> = () => {
                 )}
               </Styles.PriceContainer>
               <div>
-                <Styles.GrayInfo>33 osoby kupiły</Styles.GrayInfo>
                 <Styles.GrayInfo>
-                  {`${formatToPln(item.deliveryCost)} z dostawą`}
+                  {item.peopleWhoBought > 1
+                    ? `${item.peopleWhoBought} osoby kupiły`
+                    : item.peopleWhoBought === 1
+                    ? `${item.peopleWhoBought} osoba kupiła`
+                    : null}
+                </Styles.GrayInfo>
+                <Styles.GrayInfo>
+                  {`dostawa od ${formatToPln(item.deliveryCost)}`}
                 </Styles.GrayInfo>
                 <SupplyInfo />
               </div>

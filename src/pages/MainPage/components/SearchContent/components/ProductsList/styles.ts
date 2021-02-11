@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import ButtonMaterial from "@material-ui/core/Button";
 
+import { Link } from "components";
+
 import { theme } from "assets/theme";
 
 const { font, colors } = theme;
@@ -31,6 +33,12 @@ export const InfoContainer = styled.div`
 
   p {
     margin: 0;
+  }
+`;
+
+export const ItemTitle = styled.p`
+  :hover {
+    color: ${colors.blue_link};
   }
 `;
 
