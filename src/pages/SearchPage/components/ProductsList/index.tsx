@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Cookies from "js-cookie";
 
 import {
   selectItemsFound,
@@ -102,6 +103,11 @@ const ProductsList: React.FC<Props> = () => {
 
         const handleSetDisplayedItem = (item: IChangedItem) => {
           dispatch(setDisplayedItem(item));
+
+          // set Cookie
+          const itemInJson = JSON.stringify(item);
+
+          Cookies.set("displayedItem", `${itemInJson}`);
         };
 
         return (

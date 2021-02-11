@@ -57,6 +57,9 @@ export const groceriesSlice = createSlice({
     setDisplayedItem: (state, action) => {
       state.displayedItem = action.payload;
     },
+    setDisplayedItemFromCookie: (state, action) => {
+      state.displayedItem = action.payload;
+    },
   },
 });
 
@@ -75,6 +78,7 @@ export const {
   setUsingCookies,
   setSearchElementStatusSucceededByCookies,
   setDisplayedItem,
+  setDisplayedItemFromCookie,
 } = groceriesSlice.actions;
 
 export const fetchProductsCategories = () => async (dispatch: Dispatch) => {
@@ -194,5 +198,7 @@ export const selectSearchCategory = (state: any) =>
   state.products.searchCategory;
 
 export const selectItemsFound = (state: any) => state.products.itemsFound;
+
+export const selectDisplayedItem = (state: any) => state.products.displayedItem;
 
 export default groceriesSlice.reducer;
