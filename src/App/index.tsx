@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import {
@@ -8,10 +8,12 @@ import {
   setUsingCookies,
   setSearchElementStatusSucceededByCookies,
 } from "features/products/index";
-import { mainPageRoutes } from "assets";
-import { MainMenu } from "components";
+import { mainRoutes } from "assets";
 
-const MainPage: React.FC = () => {
+import { MainMenu } from "./components/index";
+import { Wrapper } from "./styles";
+
+const App: React.FC = () => {
   const dispatch = useDispatch();
 
   const cookieSearchElement = Cookies.get("searchElement");
@@ -37,20 +39,22 @@ const MainPage: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <MainMenu propsVariant={"openDefaultVariantBar"} />
-      <Switch>
-        {mainPageRoutes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.component}
-          />
-        ))}
-      </Switch>
-    </div>
+    <Router>
+      <Wrapper>
+        <MainMenu propsVariant={"openDefaultVariantBar"} />
+        <Switch>
+          {mainRoutes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.component}
+            />
+          ))}
+        </Switch>
+      </Wrapper>
+    </Router>
   );
 };
 
-export default MainPage;
+export default App;

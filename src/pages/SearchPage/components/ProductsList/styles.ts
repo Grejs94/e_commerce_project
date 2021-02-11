@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import ButtonMaterial from "@material-ui/core/Button";
 
-import { Link } from "components";
-
 import { theme } from "assets/theme";
 
 const { font, colors } = theme;
@@ -42,12 +40,12 @@ export const ItemTitle = styled.p`
   }
 `;
 
-export const greatSellerContainer = styled.div`
+export const GreatSellerContainer = styled.div`
   display: flex;
   align-items: center;
 `;
 
-export const greatSellerImageContainer = styled.div`
+export const GreatSellerImageContainer = styled.div`
   width: 25px;
   padding: 5px;
 `;

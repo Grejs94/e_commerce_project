@@ -8,7 +8,7 @@ import { SearchInfo, Sorting, ProductsList } from "./components";
 
 type Props = {};
 
-const SearchContent: React.FC<Props> = () => {
+const SearchPage: React.FC<Props> = () => {
   const data = useSelector(selectSearchElementStatus);
 
   if (data === "iddle" || data === "inProgress") {
@@ -28,4 +28,4 @@ const SearchContent: React.FC<Props> = () => {
   );
 };
 
-export default SearchContent;
+export default SearchPage;

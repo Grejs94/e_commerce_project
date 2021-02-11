@@ -1,4 +1,5 @@
-import MainPage from "./MainPage/index";
 import ItemPage from "./ItemPage/index";
+import HomePage from "./HomePage/index";
+import SearchPage from "./SearchPage/index";
 
-export { MainPage, ItemPage };
+export { ItemPage, HomePage, SearchPage };

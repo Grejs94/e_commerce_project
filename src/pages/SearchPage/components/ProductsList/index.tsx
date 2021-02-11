@@ -87,13 +87,13 @@ const ProductsList: React.FC<Props> = () => {
         const GreatSeller = () => {
           if (item.greatSeller) {
             return (
-              <Styles.greatSellerContainer>
+              <Styles.GreatSellerContainer>
                 od
-                <Styles.greatSellerImageContainer>
+                <Styles.GreatSellerImageContainer>
                   <Styles.Image src="https://assets.allegrostatic.com/metrum/icon/super-seller-af2bec0d44.svg" />
-                </Styles.greatSellerImageContainer>
+                </Styles.GreatSellerImageContainer>
                 Super Sprzedawcy
-              </Styles.greatSellerContainer>
+              </Styles.GreatSellerContainer>
             );
           }
 

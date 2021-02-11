@@ -1,11 +1,21 @@
-import { MainPage } from "pages";
+import { ItemPage, HomePage, SearchPage } from "pages/index";
 
-const mainRoutes = [
+const mainPageRoutes = [
   {
     path: "/",
-    component: MainPage,
+    component: HomePage,
+    exact: true,
+  },
+  {
+    path: "/search",
+    component: SearchPage,
+    exact: false,
+  },
+  {
+    path: "/item",
+    component: ItemPage,
     exact: false,
   },
 ];
 
-export default mainRoutes;
+export default mainPageRoutes;
