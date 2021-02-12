@@ -107,47 +107,47 @@ export const fetchSpecificCategory = (category: string) => async (
     const expandedItems = specificCategoryItems.map((item: Item) => {
       // add aditional data created randomly
 
-      let supplyInfo = false;
-      let smart = false;
-      let greatSeller = false;
-      let supplyTime = 0;
-      let deliveryCost = 8.99;
-      let peopleWhoBought = Math.floor(Math.random() * 10);
+      function getRandomIntInclusive(min: number, max: number) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
 
-      const supplyRand = Math.random() > 0.4;
-      const smartRand = Math.random() > 0.4;
-      const greatSellerRand = Math.random() > 0.4;
-
-      const addAdditionalRandomData = () => {
-        if (supplyRand) {
-          supplyInfo = true;
+      const randomBoolean = () => {
+        if (getRandomIntInclusive(0, 1) === 1) {
+          return true;
         } else {
-          return;
-        }
-
-        if (smartRand) {
-          smart = true;
-        } else {
-          return;
-        }
-
-        if (greatSellerRand) {
-          greatSeller = true;
-        } else {
-          return;
-        }
-
-        if (supplyInfo) {
-          const supplyTimeRand = Math.random() > 0.5;
-
-          if (supplyTimeRand) {
-            supplyTime = 1;
-          } else {
-            supplyTime = 2;
-          }
+          return false;
         }
       };
-      addAdditionalRandomData();
+
+      const generateQualityRatio = () => {
+        // get number between min max (include max)
+
+        const intigerValueAsString = getRandomIntInclusive(2, 4).toString();
+        const restValueAsString = getRandomIntInclusive(0, 99).toString();
+
+        const qualityRatio = `${intigerValueAsString},${
+          restValueAsString.length === 1
+            ? `0${restValueAsString}`
+            : restValueAsString
+        }`;
+
+        console.log(qualityRatio);
+
+        return qualityRatio;
+      };
+
+      // Item property
+      const supplyInfo = randomBoolean();
+      const smart = randomBoolean();
+      const greatSeller = randomBoolean();
+      const supplyTime = getRandomIntInclusive(0, 2);
+      const deliveryCost = 8.99;
+      const peopleWhoBought = getRandomIntInclusive(0, 300);
+      const qualityRatio = generateQualityRatio();
+      const assessmentNumber = getRandomIntInclusive(0, 200);
+      const availableItemsToBought = getRandomIntInclusive(0, 200);
 
       return {
         ...item,
@@ -158,6 +158,9 @@ export const fetchSpecificCategory = (category: string) => async (
         deliveryCost,
         greatSeller,
         peopleWhoBought,
+        qualityRatio,
+        assessmentNumber,
+        availableItemsToBought,
       };
     });
 

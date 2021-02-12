@@ -8,6 +8,9 @@ import {
 } from "features/products/index";
 import { LoadingIndicator } from "components";
 
+import * as Styles from "./styles";
+import { InfoComponents } from "./components";
+
 type Props = {};
 
 const ItemPage: React.FC<Props> = () => {
@@ -33,9 +36,11 @@ const ItemPage: React.FC<Props> = () => {
     return <LoadingIndicator />;
   }
 
-  // displayedItem - redux state
-
-  return <div>ItemPage</div>;
+  return (
+    <Styles.Wrapper>
+      <InfoComponents item={item} />
+    </Styles.Wrapper>
+  );
 };
 
 export default ItemPage;

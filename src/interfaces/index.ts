@@ -21,4 +21,7 @@ export interface IChangedItem {
   greatSeller: boolean;
   deliveryCost: number;
   peopleWhoBought: number;
+  qualityRatio: string;
+  assessmentNumber: number;
+  availableItemsToBought: number;
 }
