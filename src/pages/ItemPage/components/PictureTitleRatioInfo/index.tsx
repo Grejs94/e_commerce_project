@@ -1,5 +1,4 @@
 import React from "react";
-// import ShareIcon from "@material-ui/icons/Share";
 
 import { IChangedItem } from "interfaces/index";
 
@@ -9,7 +8,7 @@ type Props = {
   item: IChangedItem;
 };
 
-const InfoComponents: React.FC<Props> = ({ item }) => {
+const PictureTitleRatioInfo: React.FC<Props> = ({ item }) => {
   return (
     <Styles.Wrapper>
       <Styles.HeroImageWrapper>
@@ -24,11 +23,20 @@ const InfoComponents: React.FC<Props> = ({ item }) => {
           <Styles.StarBorderIcon />
         </Styles.IconContainer>
       </Styles.SpaceBetweenContainer>
-      <Styles.QualityContainer>
-        <span>{item.qualityRatio}</span>
-      </Styles.QualityContainer>
+      <Styles.TextInfoContainer>
+        <Styles.Title>{item.title}</Styles.Title>
+        <Styles.ItemRatioContainer>
+          <Styles.ItemRatio>{item.qualityRatio}</Styles.ItemRatio>
+          <Styles.RatioIconContainer>
+            <Styles.Icon numberOfStars={item.qualityRatioAsNumber} />
+          </Styles.RatioIconContainer>
+          <Styles.PeopleWhoRated>
+            {`${item.assessmentNumber} oceny produktu`}
+          </Styles.PeopleWhoRated>
+        </Styles.ItemRatioContainer>
+      </Styles.TextInfoContainer>
     </Styles.Wrapper>
   );
 };
 
-export default InfoComponents;
+export default PictureTitleRatioInfo;

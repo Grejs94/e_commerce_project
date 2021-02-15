@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 10px;
+  min-height: 200vh;
 `;
 
 // common components
@@ -16,6 +17,8 @@ export const HeroImageWrapper = styled.div`
   padding: 10px;
   height: 47vh;
   width: auto;
+  display: flex;
+  justify-content: center;
 `;
 
 export const ResponsiveImage = styled.img`
@@ -54,3 +57,18 @@ export const HeroButtonsContainer = styled.div``;
 export const SingleHeroButtonContainer = styled.div``;
 
 // SpaceBetweenContainer
+
+export const Hr = styled.hr`
+  background-image: initial;
+  background-color: rgb(34, 38, 39);
+  border-color: initial;
+  background: #ddd;
+  border: 0;
+  box-sizing: border-box;
+  display: block;
+  height: 1px;
+  margin: 0;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 8px;
+`;

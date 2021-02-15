@@ -121,21 +121,47 @@ export const fetchSpecificCategory = (category: string) => async (
         }
       };
 
-      const generateQualityRatio = () => {
+      const intigerValueAsString = getRandomIntInclusive(2, 4).toString();
+      const restValueAsString = getRandomIntInclusive(0, 99).toString();
+
+      const generateQualityRatio = (variant: string) => {
+        if (variant === "string") {
+          const qualityRatio = `${intigerValueAsString},${
+            restValueAsString.length === 1
+              ? `0${restValueAsString}`
+              : restValueAsString
+          }`;
+
+          return qualityRatio;
+        } else if (variant === "number") {
+          const ratioAsNumber = Number(
+            `${intigerValueAsString}.${restValueAsString}`
+          );
+
+          return ratioAsNumber;
+        }
         // get number between min max (include max)
+      };
 
-        const intigerValueAsString = getRandomIntInclusive(2, 4).toString();
-        const restValueAsString = getRandomIntInclusive(0, 99).toString();
+      // I created this fn because I wanna be sure that AssessmentNumber is smaller than peopleWhoBought
+      const generateAssessmentNumber = (peopleWhoBought: number) => {
+        const lengthOfPeopleBought = peopleWhoBought.toString().length;
 
-        const qualityRatio = `${intigerValueAsString},${
-          restValueAsString.length === 1
-            ? `0${restValueAsString}`
-            : restValueAsString
-        }`;
+        if (lengthOfPeopleBought === 1) {
+          if (peopleWhoBought < 5) {
+            return peopleWhoBought;
+          }
 
-        console.log(qualityRatio);
+          return peopleWhoBought - getRandomIntInclusive(0, 4);
+        }
 
-        return qualityRatio;
+        if (lengthOfPeopleBought === 2) {
+          return peopleWhoBought - getRandomIntInclusive(0, 9);
+        }
+
+        if (lengthOfPeopleBought === 3) {
+          return peopleWhoBought - getRandomIntInclusive(0, 99);
+        }
       };
 
       // Item property
@@ -145,8 +171,9 @@ export const fetchSpecificCategory = (category: string) => async (
       const supplyTime = getRandomIntInclusive(0, 2);
       const deliveryCost = 8.99;
       const peopleWhoBought = getRandomIntInclusive(0, 300);
-      const qualityRatio = generateQualityRatio();
-      const assessmentNumber = getRandomIntInclusive(0, 200);
+      const qualityRatio = generateQualityRatio("string");
+      const qualityRatioAsNumber = generateQualityRatio("number");
+      const assessmentNumber = generateAssessmentNumber(peopleWhoBought);
       const availableItemsToBought = getRandomIntInclusive(0, 200);
 
       return {
@@ -161,6 +188,7 @@ export const fetchSpecificCategory = (category: string) => async (
         qualityRatio,
         assessmentNumber,
         availableItemsToBought,
+        qualityRatioAsNumber,
       };
     });
 

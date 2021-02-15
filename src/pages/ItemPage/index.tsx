@@ -9,7 +9,7 @@ import {
 import { LoadingIndicator } from "components";
 
 import * as Styles from "./styles";
-import { InfoComponents } from "./components";
+import { PictureTitleRatioInfo, PricePeopleBought } from "./components";
 
 type Props = {};
 
@@ -38,7 +38,10 @@ const ItemPage: React.FC<Props> = () => {
 
   return (
     <Styles.Wrapper>
-      <InfoComponents item={item} />
+      <PictureTitleRatioInfo item={item} />
+      <Styles.Hr />
+      <PricePeopleBought item={item} />
+      <Styles.Hr />
     </Styles.Wrapper>
   );
 };

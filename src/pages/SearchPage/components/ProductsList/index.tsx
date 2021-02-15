@@ -10,6 +10,7 @@ import {
 import { IChangedItem } from "interfaces/index";
 import { LoadingIndicator, Link } from "components";
 import { formatToPln } from "utils/moneyFormat";
+import { setPriceBeforeComma, setAfterComma } from "pages/helpers";
 
 import * as Styles from "./styles";
 
@@ -22,37 +23,6 @@ const ProductsList: React.FC<Props> = () => {
   return (
     <div>
       {items.map((item: IChangedItem) => {
-        // handle item price display method because API price is very bad eg. (11 ; 11.99; 11.9) several formats!!!
-
-        let price = { beforeComma: "0", afterComma: "0" };
-
-        const setPrice = (number: number) => {
-          const gotComma = number.toString().includes(".");
-
-          const indexOfComma = number.toString().indexOf(".");
-
-          let beforeComma = item.price.toString().slice(0, indexOfComma);
-
-          let afterComma = item.price.toString().slice(indexOfComma + 1);
-
-          if (afterComma.length === 1) {
-            afterComma = `${afterComma}${"0"}`;
-          }
-
-          if (gotComma) {
-            price = {
-              beforeComma: beforeComma,
-              afterComma: afterComma,
-            };
-          } else {
-            price = {
-              beforeComma: number.toString(),
-              afterComma: "00",
-            };
-          }
-        };
-        setPrice(item.price);
-
         const handleAddToBaskket = (id: number) => {
           const toggleButtonVisible = () => {
             const setButtonVisible = (bool: boolean) =>
@@ -125,9 +95,9 @@ const ProductsList: React.FC<Props> = () => {
               <GreatSeller />
               <Styles.PriceContainer>
                 <Styles.PriceBeforeComma>
-                  {`${price.beforeComma},`}
+                  {`${setPriceBeforeComma(item.price)},`}
                   <Styles.PriceAfterComma>
-                    {`${price.afterComma} zł`}
+                    {`${setAfterComma(item.price)} zł`}
                   </Styles.PriceAfterComma>
                 </Styles.PriceBeforeComma>
                 {item.smart && (

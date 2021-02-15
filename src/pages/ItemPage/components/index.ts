@@ -1,3 +1,4 @@
-import InfoComponents from "./InfoComponents/index";
+import PictureTitleRatioInfo from "./PictureTitleRatioInfo/index";
+import PricePeopleBought from "./PricePeopleBought/index";
 
-export { InfoComponents };
+export { PictureTitleRatioInfo, PricePeopleBought };

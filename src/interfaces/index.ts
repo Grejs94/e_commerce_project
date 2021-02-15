@@ -24,4 +24,5 @@ export interface IChangedItem {
   qualityRatio: string;
   assessmentNumber: number;
   availableItemsToBought: number;
+  qualityRatioAsNumber: number;
 }
