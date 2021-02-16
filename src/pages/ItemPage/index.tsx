@@ -9,7 +9,13 @@ import {
 import { LoadingIndicator } from "components";
 
 import * as Styles from "./styles";
-import { PictureTitleRatioInfo, PricePeopleBought } from "./components";
+import {
+  PictureTitleRatioInfo,
+  PricePeopleBought,
+  SupplyIconsAndInfo,
+} from "./components";
+
+const data = [PictureTitleRatioInfo, PricePeopleBought, SupplyIconsAndInfo];
 
 type Props = {};
 
@@ -24,7 +30,7 @@ const ItemPage: React.FC<Props> = () => {
     parsedItem = JSON.parse(itemFromCookie);
   }
 
-  console.log(item);
+  // console.log(item);
 
   useEffect(() => {
     if (parsedItem) {
@@ -41,6 +47,8 @@ const ItemPage: React.FC<Props> = () => {
       <PictureTitleRatioInfo item={item} />
       <Styles.Hr />
       <PricePeopleBought item={item} />
+      <Styles.Hr />
+      <SupplyIconsAndInfo item={item} />
       <Styles.Hr />
     </Styles.Wrapper>
   );

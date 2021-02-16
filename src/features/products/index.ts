@@ -168,7 +168,7 @@ export const fetchSpecificCategory = (category: string) => async (
       const supplyInfo = randomBoolean();
       const smart = randomBoolean();
       const greatSeller = randomBoolean();
-      const supplyTime = getRandomIntInclusive(0, 2);
+      const supplyTime = supplyInfo ? getRandomIntInclusive(1, 2) : null;
       const deliveryCost = 8.99;
       const peopleWhoBought = getRandomIntInclusive(0, 300);
       const qualityRatio = generateQualityRatio("string");

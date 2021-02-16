@@ -14,30 +14,20 @@ export const SpaceBetweenContainer = styled.div`
 `;
 
 export const HeroImageWrapper = styled.div`
-  padding: 10px;
-  height: 47vh;
+  padding: 20px 10px;
+  max-height: 67vh;
   width: auto;
   display: flex;
   justify-content: center;
 `;
 
 export const ResponsiveImage = styled.img`
-  width: auto;
-  height: 100%;
+  max-width: 80%;
 `;
 
 // info components
 
 // xxx
-
-// transaction additionalInfo components (icons; info about supply, payment)
-
-// mapped items here using SpaceBetweenContainer and x
-
-export const AdditionalInfoWrapper = styled.div``;
-
-export const InfoWithIconsContainer = styled.div``;
-export const WordLinkText = styled.span``;
 
 // description section components
 
@@ -67,8 +57,6 @@ export const Hr = styled.hr`
   box-sizing: border-box;
   display: block;
   height: 1px;
-  margin: 0;
   width: 100%;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin: 20px 0;
 `;
