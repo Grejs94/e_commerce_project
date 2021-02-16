@@ -13,9 +13,8 @@ import {
   PictureTitleRatioInfo,
   PricePeopleBought,
   SupplyIconsAndInfo,
+  Description,
 } from "./components";
-
-const data = [PictureTitleRatioInfo, PricePeopleBought, SupplyIconsAndInfo];
 
 type Props = {};
 
@@ -30,7 +29,7 @@ const ItemPage: React.FC<Props> = () => {
     parsedItem = JSON.parse(itemFromCookie);
   }
 
-  // console.log(item);
+  console.log(item);
 
   useEffect(() => {
     if (parsedItem) {
@@ -42,6 +41,8 @@ const ItemPage: React.FC<Props> = () => {
     return <LoadingIndicator />;
   }
 
+  console.log(item.description);
+
   return (
     <Styles.Wrapper>
       <PictureTitleRatioInfo item={item} />
@@ -50,6 +51,7 @@ const ItemPage: React.FC<Props> = () => {
       <Styles.Hr />
       <SupplyIconsAndInfo item={item} />
       <Styles.Hr />
+      <Description item={item} />
     </Styles.Wrapper>
   );
 };
