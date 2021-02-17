@@ -14,6 +14,7 @@ import {
   PricePeopleBought,
   SupplyIconsAndInfo,
   Description,
+  AvailableItemsValue,
 } from "./components";
 
 type Props = {};
@@ -29,8 +30,6 @@ const ItemPage: React.FC<Props> = () => {
     parsedItem = JSON.parse(itemFromCookie);
   }
 
-  console.log(item);
-
   useEffect(() => {
     if (parsedItem) {
       dispatch(setDisplayedItemFromCookie(parsedItem));
@@ -42,13 +41,13 @@ const ItemPage: React.FC<Props> = () => {
     return <LoadingIndicator />;
   }
 
-  console.log(item.description);
-
   return (
     <Styles.Wrapper>
       <PictureTitleRatioInfo item={item} />
       <Styles.Hr />
       <PricePeopleBought item={item} />
+      <Styles.Hr />
+      <AvailableItemsValue item={item} />
       <Styles.Hr />
       <SupplyIconsAndInfo item={item} />
       <Styles.Hr />
