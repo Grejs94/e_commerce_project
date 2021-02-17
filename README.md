@@ -19,4 +19,4 @@ some important 3rd party libraries are:
 - react-responsive-carousel
 - js-cookie
 
-To pretend that i have immutable objects, I use Cookie to store the data after when they are made (I know this is not the right solution, but as I mentioned before, I used functions that use Math.random to generate the data. I didn't want to have parameters for other elements every time pres F5)
+To pretend that i have immutable objects, I use Cookie to store the data after when they are made (I know this is not the right solution, but as I mentioned before, I used functions that use Math.random to generate the expadned data. I didn't want to have diferent parameters for items every time I press F5)

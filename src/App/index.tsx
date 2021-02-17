@@ -26,7 +26,6 @@ const App: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchProductsCategories());
-
     if (parsedItems) {
       dispatch(
         setUsingCookies({
@@ -36,6 +35,7 @@ const App: React.FC = () => {
       );
       dispatch(setSearchElementStatusSucceededByCookies());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

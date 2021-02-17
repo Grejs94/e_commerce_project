@@ -1,7 +1,6 @@
 import React from "react";
 
 import { IChangedItem } from "interfaces/index";
-import { Link } from "components";
 
 import * as Styles from "./styles";
 import { data } from "./helper";

@@ -1,5 +1,3 @@
-import blue from "@material-ui/core/colors/blue";
-
 const mediaQ = (size: number): string =>
   `@media only screen and (min-width: ${size}px)`;
 

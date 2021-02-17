@@ -35,6 +35,7 @@ const ItemPage: React.FC<Props> = () => {
     if (parsedItem) {
       dispatch(setDisplayedItemFromCookie(parsedItem));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (item === "") {
