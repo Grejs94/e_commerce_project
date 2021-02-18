@@ -15,6 +15,7 @@ import {
   SupplyIconsAndInfo,
   Description,
   AvailableItemsValue,
+  GuaranteeOfSafety,
 } from "./components";
 
 type Props = {};
@@ -48,6 +49,8 @@ const ItemPage: React.FC<Props> = () => {
       <PricePeopleBought item={item} />
       <Styles.Hr />
       <AvailableItemsValue item={item} />
+      <Styles.Hr />
+      <GuaranteeOfSafety />
       <Styles.Hr />
       <SupplyIconsAndInfo item={item} />
       <Styles.Hr />

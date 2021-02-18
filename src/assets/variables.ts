@@ -18,6 +18,7 @@ export const colors = {
   gray_background_medium: "#c3c3c3",
   gray_text: "#767676",
   blue_link: "rgb(70, 204, 186)",
+  umbrella: "rgb(31, 100, 170)",
 };
 
 export type FontSize =
