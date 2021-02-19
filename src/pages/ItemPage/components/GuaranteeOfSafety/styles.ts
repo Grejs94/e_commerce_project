@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 import { theme } from "assets/theme";
 
-const { colors } = theme;
+const { colors, font } = theme;
 
 export const Wrapper = styled.div`
   display: flex;
@@ -13,7 +13,7 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${colors.umbrella};
-  width: 34px;
+  min-width: 34px;
   height: 34px;
   border-radius: 50px;
 `;
@@ -26,4 +26,23 @@ export const Icon = styled.div`
   background-size: contain;
   filter: brightness(0%)  invert(100%);
 }
+`;
+
+export const TextContainer = styled.div`
+  margin-left: 10px;
+  text-align: left;
+  color: ${colors.gray_text};
+  font-size: ${font.size.sm};
+`;
+
+export const BoldText = styled.span`
+  font-weight: ${font.weight.bold};
+`;
+
+export const Text = styled.p`
+  margin: 0;
+`;
+
+export const TextAsLink = styled.span`
+  color: ${colors.blue_link};
 `;

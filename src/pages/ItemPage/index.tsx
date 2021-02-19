@@ -48,11 +48,11 @@ const ItemPage: React.FC<Props> = () => {
       <Styles.Hr />
       <PricePeopleBought item={item} />
       <Styles.Hr />
+      <SupplyIconsAndInfo item={item} />
+      <Styles.Hr />
       <AvailableItemsValue item={item} />
       <Styles.Hr />
       <GuaranteeOfSafety />
-      <Styles.Hr />
-      <SupplyIconsAndInfo item={item} />
       <Styles.Hr />
       <Description item={item} />
     </Styles.Wrapper>
