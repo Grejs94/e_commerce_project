@@ -16,6 +16,7 @@ import {
   Description,
   AvailableItemsValue,
   GuaranteeOfSafety,
+  ProductGraph,
 } from "./components";
 
 type Props = {};
@@ -55,6 +56,8 @@ const ItemPage: React.FC<Props> = () => {
       <GuaranteeOfSafety />
       <Styles.Hr />
       <Description item={item} />
+      <Styles.Hr />
+      <ProductGraph item={item} />
     </Styles.Wrapper>
   );
 };

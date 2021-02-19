@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   padding: 10px;
-  min-height: 300vh;
+  min-height: 400vh;
 `;
 
 // common components

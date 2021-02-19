@@ -4,6 +4,7 @@ import SupplyIconsAndInfo from "./SupplyIconsAndInfo/index";
 import Description from "./Description/index";
 import AvailableItemsValue from "./AvailableItemsValue/index";
 import GuaranteeOfSafety from "./GuaranteeOfSafety/index";
+import ProductGraph from "./ProductGraph/index";
 
 export {
   PictureTitleRatioInfo,
@@ -12,4 +13,5 @@ export {
   Description,
   AvailableItemsValue,
   GuaranteeOfSafety,
+  ProductGraph,
 };

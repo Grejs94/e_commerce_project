@@ -7,6 +7,15 @@ export interface Item {
   title: string;
 }
 
+interface Idegree {
+  sum: number;
+  degree5: number;
+  degree4: number;
+  degree3: number;
+  degree2: number;
+  degree1: number;
+}
+
 export interface IChangedItem {
   category: string;
   description: string;
@@ -25,4 +34,5 @@ export interface IChangedItem {
   assessmentNumber: number;
   availableItemsToBought: number;
   qualityRatioAsNumber: number;
+  degree: Idegree;
 }

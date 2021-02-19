@@ -164,6 +164,71 @@ export const fetchSpecificCategory = (category: string) => async (
         }
       };
 
+      const genereteDegree = () => {
+        const sum = getRandomIntInclusive(0, 100);
+        const degree5 = getRandomIntInclusive(0, sum);
+        const rest1 = sum - degree5;
+        if (rest1 === 0) {
+          return {
+            sum: sum,
+            degree5,
+            degree4: 0,
+            degree3: 0,
+            degree2: 0,
+            degree1: 0,
+          };
+        }
+
+        const degree4 = getRandomIntInclusive(0, rest1);
+        const rest2 = rest1 - degree4;
+        if (rest2 === 0) {
+          return {
+            sum: sum,
+            degree5,
+            degree4,
+            degree3: 0,
+            degree2: 0,
+            degree1: 0,
+          };
+        }
+
+        const degree3 = getRandomIntInclusive(0, rest2);
+        const rest3 = rest2 - degree3;
+        if (rest3 === 0) {
+          return {
+            sum: sum,
+            degree5,
+            degree4,
+            degree3,
+            degree2: 0,
+            degree1: 0,
+          };
+        }
+
+        const degree2 = getRandomIntInclusive(0, rest3);
+        const rest4 = rest3 - degree2;
+        if (rest4 === 0) {
+          return {
+            sum: sum,
+            degree5,
+            degree4,
+            degree3,
+            degree2,
+            degree1: 0,
+          };
+        }
+
+        const degree1 = rest4;
+        return {
+          sum: sum,
+          degree5,
+          degree4,
+          degree3,
+          degree2,
+          degree1,
+        };
+      };
+
       // Item property
       const supplyInfo = randomBoolean();
       const smart = randomBoolean();
@@ -189,6 +254,7 @@ export const fetchSpecificCategory = (category: string) => async (
         assessmentNumber,
         availableItemsToBought,
         qualityRatioAsNumber,
+        degree: genereteDegree(),
       };
     });
 
