@@ -2,7 +2,6 @@ import React from "react";
 
 import { IChangedItem } from "interfaces/index";
 
-import { data } from "./helper";
 import * as Styles from "./styles";
 
 type Props = {
@@ -33,15 +32,22 @@ const RightSiteComponentGraphList: React.FC<Props> = ({ item }) => {
     },
   ];
 
-  console.log(degreeArray);
+  const expandedDegreeArray = degreeArray.map((degree) => {
+    const OpinonPercentage = Math.floor(
+      (degree.numberOfDegree * 100) / item.assessmentNumber
+    );
 
-  // const degreeArray = ["5", "4", "3", "2", "1"];
+    return {
+      ...degree,
+      opinionPercentage: OpinonPercentage,
+    };
+  });
 
   return (
     <Styles.Wrapper>
       <Styles.PaddingContainer>
-        <Styles.AllDegreeGraphsContainer>
-          {degreeArray.map((line) => (
+        <div>
+          {expandedDegreeArray.map((line) => (
             <Styles.SingleLineGraphContainer key={line.degreeLVL}>
               <Styles.DegreeASNumber>{line.degreeLVL}</Styles.DegreeASNumber>
               <Styles.StarContainer>
@@ -49,23 +55,21 @@ const RightSiteComponentGraphList: React.FC<Props> = ({ item }) => {
               </Styles.StarContainer>
 
               <Styles.HorizontalBarGraphEmpty>
-                <Styles.HorizontalBarGraphFilled />
+                <Styles.HorizontalBarGraphFilled
+                  opinionPercentage={line.opinionPercentage}
+                />
               </Styles.HorizontalBarGraphEmpty>
-              <Styles.GradesNumberAtThisLevel>
-                {line.numberOfDegree}
-              </Styles.GradesNumberAtThisLevel>
+              <Styles.GradesNumberContainer>
+                <Styles.GradesNumberAtThisLevel>
+                  {line.numberOfDegree}
+                </Styles.GradesNumberAtThisLevel>
+              </Styles.GradesNumberContainer>
             </Styles.SingleLineGraphContainer>
           ))}
-        </Styles.AllDegreeGraphsContainer>
+        </div>
       </Styles.PaddingContainer>
     </Styles.Wrapper>
   );
 };
 
 export default RightSiteComponentGraphList;
-
-// StarIcon
-// AllHorizontalBarsContainer
-// HorizontalBarGraphEmpty
-// HorizontalBarGraphFilled
-// GradesNumberAtThisLevel

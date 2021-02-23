@@ -12,8 +12,6 @@ export const PaddingContainer = styled.div`
   padding: 5px 0;
 `;
 
-export const AllDegreeGraphsContainer = styled.div``;
-
 export const SingleLineGraphContainer = styled.div`
   display: flex;
   align-items: center;
@@ -43,10 +41,19 @@ export const HorizontalBarGraphEmpty = styled.div`
   margin-right: 4px;
 `;
 
-export const HorizontalBarGraphFilled = styled.div`
-  width: 20px;
+type GraphFilledProps = {
+  opinionPercentage: number;
+};
+
+export const HorizontalBarGraphFilled = styled.div<GraphFilledProps>`
+  width: ${(props: GraphFilledProps) => `${props.opinionPercentage}%`};
   height: 4px;
   background-color: #ff5a00;
+`;
+
+export const GradesNumberContainer = styled.div`
+  text-align: left;
+  min-width: 27px;
 `;
 
 export const GradesNumberAtThisLevel = styled.span`

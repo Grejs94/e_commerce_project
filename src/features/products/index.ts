@@ -162,10 +162,12 @@ export const fetchSpecificCategory = (category: string) => async (
         if (lengthOfPeopleBought === 3) {
           return peopleWhoBought - getRandomIntInclusive(0, 99);
         }
+
+        return peopleWhoBought - 5;
       };
 
-      const genereteDegree = () => {
-        const sum = getRandomIntInclusive(0, 100);
+      const genereteDegree = (assessmentNumber: number) => {
+        const sum = assessmentNumber;
         const degree5 = getRandomIntInclusive(0, sum);
         const rest1 = sum - degree5;
         if (rest1 === 0) {
@@ -240,6 +242,7 @@ export const fetchSpecificCategory = (category: string) => async (
       const qualityRatioAsNumber = generateQualityRatio("number");
       const assessmentNumber = generateAssessmentNumber(peopleWhoBought);
       const availableItemsToBought = getRandomIntInclusive(0, 200);
+      const degree = genereteDegree(assessmentNumber);
 
       return {
         ...item,
@@ -254,7 +257,7 @@ export const fetchSpecificCategory = (category: string) => async (
         assessmentNumber,
         availableItemsToBought,
         qualityRatioAsNumber,
-        degree: genereteDegree(),
+        degree: degree,
       };
     });
 
