@@ -1,6 +1,7 @@
 import React from "react";
 
 import { IChangedItem } from "interfaces/index";
+import { Carousel } from "./components";
 
 import * as Styles from "./styles";
 
@@ -11,27 +12,23 @@ type Props = {
 const PictureTitleRatioInfo: React.FC<Props> = ({ item }) => {
   return (
     <Styles.Wrapper>
-      <Styles.HeroImageWrapper>
-        <Styles.ResponsiveImage src={item.image} />
-      </Styles.HeroImageWrapper>
+      <Carousel item={item} />
       <Styles.SpaceBetweenContainer>
-        <Styles.PictureNumberContainer>
-          <span>1 z 2</span>
-        </Styles.PictureNumberContainer>
-        <Styles.IconContainer>
+        <div></div>
+        <div>
           <Styles.ShareIcon />
           <Styles.StarBorderIcon />
-        </Styles.IconContainer>
+        </div>
       </Styles.SpaceBetweenContainer>
       <Styles.TextInfoContainer>
         <Styles.Title>{item.title}</Styles.Title>
         <Styles.ItemRatioContainer>
-          <Styles.ItemRatio>{item.qualityRatio}</Styles.ItemRatio>
+          <Styles.ItemRatio>{`${item.degree.averageGrande.intAsString},${item.degree.averageGrande.decimalAsString}`}</Styles.ItemRatio>
           <Styles.RatioIconContainer>
-            <Styles.Icon numberOfStars={item.qualityRatioAsNumber} />
+            <Styles.Icon numberOfStars={item.degree.averageGrande.asNumber} />
           </Styles.RatioIconContainer>
           <Styles.PeopleWhoRated>
-            {`${item.assessmentNumber} oceny produktu`}
+            {`${item.degree.sum} oceny produktu`}
           </Styles.PeopleWhoRated>
         </Styles.ItemRatioContainer>
       </Styles.TextInfoContainer>

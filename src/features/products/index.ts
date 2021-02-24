@@ -6,7 +6,6 @@ import api from "api";
 import { Item } from "interfaces/index";
 
 import { initialState } from "./data";
-import { ok } from "assert";
 
 export const groceriesSlice = createSlice({
   name: "products",
@@ -120,51 +119,6 @@ export const fetchSpecificCategory = (category: string) => async (
         } else {
           return false;
         }
-      };
-
-      const intigerValueAsString = getRandomIntInclusive(2, 4).toString();
-      const restValueAsString = getRandomIntInclusive(0, 99).toString();
-
-      const generateQualityRatio = (variant: string) => {
-        if (variant === "string") {
-          const qualityRatio = `${intigerValueAsString},${
-            restValueAsString.length === 1
-              ? `0${restValueAsString}`
-              : restValueAsString
-          }`;
-
-          return qualityRatio;
-        } else if (variant === "number") {
-          const ratioAsNumber = Number(
-            `${intigerValueAsString}.${restValueAsString}`
-          );
-
-          return ratioAsNumber;
-        }
-        // get number between min max (include max)
-      };
-
-      // I created this fn because I wanna be sure that AssessmentNumber is smaller than peopleWhoBought
-      const generateAssessmentNumber = (peopleWhoBought: number) => {
-        const lengthOfPeopleBought = peopleWhoBought.toString().length;
-
-        if (lengthOfPeopleBought === 1) {
-          if (peopleWhoBought < 5) {
-            return peopleWhoBought;
-          }
-
-          return peopleWhoBought - getRandomIntInclusive(0, 4);
-        }
-
-        if (lengthOfPeopleBought === 2) {
-          return peopleWhoBought - getRandomIntInclusive(0, 9);
-        }
-
-        if (lengthOfPeopleBought === 3) {
-          return peopleWhoBought - getRandomIntInclusive(0, 99);
-        }
-
-        return peopleWhoBought - 5;
       };
 
       const genereteDegree = (assessmentNumber: number) => {
@@ -401,11 +355,8 @@ export const fetchSpecificCategory = (category: string) => async (
       const supplyTime = supplyInfo ? getRandomIntInclusive(1, 2) : null;
       const deliveryCost = 8.99;
       const peopleWhoBought = getRandomIntInclusive(0, 300);
-      const qualityRatio = generateQualityRatio("string");
-      const qualityRatioAsNumber = generateQualityRatio("number");
-      const assessmentNumber = generateAssessmentNumber(peopleWhoBought);
       const availableItemsToBought = getRandomIntInclusive(0, 200);
-      const degree = genereteDegree(assessmentNumber);
+      const degree = genereteDegree(getRandomIntInclusive(0, 40));
       const degreeExpanded = expandDegree(degree);
 
       return {
@@ -417,10 +368,7 @@ export const fetchSpecificCategory = (category: string) => async (
         deliveryCost,
         greatSeller,
         peopleWhoBought,
-        qualityRatio,
-        assessmentNumber,
         availableItemsToBought,
-        qualityRatioAsNumber,
         degree: degreeExpanded,
       };
     });

@@ -13,8 +13,6 @@ type Props = {
 };
 
 const ProductGraph: React.FC<Props> = ({ item }) => {
-  console.log(item);
-
   return (
     <Styles.Wrapper>
       <Styles.SectionTitle>Opinie o produkcie</Styles.SectionTitle>

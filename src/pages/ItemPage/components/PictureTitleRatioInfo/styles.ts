@@ -17,24 +17,6 @@ export const Wrapper = styled.div`
   font-size: ${font.size.sm};
 `;
 
-// HeroImageWrapper is here
-
-// ResponsiveImage is here
-
-// SpaceBetweenContainer is here
-
-export const PictureNumberContainer = styled.div`
-  padding: 0 5px;
-
-  span {
-    letter-spacing: 1.3px;
-    padding: 5px 8px;
-    background: ${colors.gray_background_medium};
-  }
-`;
-
-export const IconContainer = styled.div``;
-
 const iconsCss = `
     color: ${colors.blue_link};
     cursor: pointer;
@@ -45,8 +27,6 @@ export const ShareIcon = styled(ShareIconMaterial)`
     ${iconsCss}
   }
 `;
-
-export const QualityContainer = styled.div``;
 
 export const StarBorderIcon = styled(StarBorderIconMaterial)`
   && {

@@ -1,8 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  padding: 10px;
-  min-height: 400vh;
+  padding: 10px 10px 20px 10px;
 `;
 
 // common components
@@ -11,6 +10,7 @@ export const SpaceBetweenContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+  align-items: center;
 `;
 
 export const HeroImageWrapper = styled.div`
