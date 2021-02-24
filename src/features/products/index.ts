@@ -6,6 +6,7 @@ import api from "api";
 import { Item } from "interfaces/index";
 
 import { initialState } from "./data";
+import { ok } from "assert";
 
 export const groceriesSlice = createSlice({
   name: "products",
@@ -173,11 +174,28 @@ export const fetchSpecificCategory = (category: string) => async (
         if (rest1 === 0) {
           return {
             sum: sum,
-            degree5,
-            degree4: 0,
-            degree3: 0,
-            degree2: 0,
-            degree1: 0,
+            degrees: [
+              {
+                numberRatingsIssued: degree5,
+                numbering: 5,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 4,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 3,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 2,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 1,
+              },
+            ],
           };
         }
 
@@ -186,11 +204,28 @@ export const fetchSpecificCategory = (category: string) => async (
         if (rest2 === 0) {
           return {
             sum: sum,
-            degree5,
-            degree4,
-            degree3: 0,
-            degree2: 0,
-            degree1: 0,
+            degrees: [
+              {
+                numberRatingsIssued: degree5,
+                numbering: 5,
+              },
+              {
+                numberRatingsIssued: degree4,
+                numbering: 4,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 3,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 2,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 1,
+              },
+            ],
           };
         }
 
@@ -199,11 +234,28 @@ export const fetchSpecificCategory = (category: string) => async (
         if (rest3 === 0) {
           return {
             sum: sum,
-            degree5,
-            degree4,
-            degree3,
-            degree2: 0,
-            degree1: 0,
+            degrees: [
+              {
+                numberRatingsIssued: degree5,
+                numbering: 5,
+              },
+              {
+                numberRatingsIssued: degree4,
+                numbering: 4,
+              },
+              {
+                numberRatingsIssued: degree3,
+                numbering: 3,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 2,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 1,
+              },
+            ],
           };
         }
 
@@ -212,22 +264,133 @@ export const fetchSpecificCategory = (category: string) => async (
         if (rest4 === 0) {
           return {
             sum: sum,
-            degree5,
-            degree4,
-            degree3,
-            degree2,
-            degree1: 0,
+            degrees: [
+              {
+                numberRatingsIssued: degree5,
+                numbering: 5,
+              },
+              {
+                numberRatingsIssued: degree4,
+                numbering: 4,
+              },
+              {
+                numberRatingsIssued: degree3,
+                numbering: 3,
+              },
+              {
+                numberRatingsIssued: degree2,
+                numbering: 2,
+              },
+              {
+                numberRatingsIssued: 0,
+                numbering: 1,
+              },
+            ],
           };
         }
 
         const degree1 = rest4;
         return {
           sum: sum,
-          degree5,
-          degree4,
-          degree3,
-          degree2,
-          degree1,
+          degrees: [
+            {
+              numberRatingsIssued: degree5,
+              numbering: 5,
+            },
+            {
+              numberRatingsIssued: degree4,
+              numbering: 4,
+            },
+            {
+              numberRatingsIssued: degree3,
+              numbering: 3,
+            },
+            {
+              numberRatingsIssued: degree2,
+              numbering: 2,
+            },
+            {
+              numberRatingsIssued: degree1,
+              numbering: 1,
+            },
+          ],
+        };
+      };
+
+      type Idegees = {
+        numberRatingsIssued: number;
+        numbering: number;
+      };
+
+      type IdegreeExpanded = {
+        sum: number;
+        degrees: Array<Idegees>;
+      };
+
+      const expandDegree = (arr: IdegreeExpanded) => {
+        const newArray = arr.degrees.map((degree) => {
+          const opinonPercentage = Math.floor(
+            (degree.numberRatingsIssued * 100) / arr.sum
+          );
+
+          return {
+            ...degree,
+            opinionPercentage: opinonPercentage,
+          };
+        });
+
+        const averageGrande = () => {
+          const averageGrande = (
+            arr.degrees.reduce(
+              (acc, item) => acc + item.numberRatingsIssued * item.numbering,
+              0
+            ) / arr.sum
+          ).toFixed(2);
+
+          const intiger = averageGrande.slice(0, 1);
+
+          let decimal = averageGrande.slice(2);
+
+          if (decimal.length === 0) {
+            decimal = "00";
+          }
+
+          if (decimal.length === 1) {
+            decimal = `${decimal}0`;
+          }
+
+          const degreesInWords = (number: number) => {
+            if (number > 4.4) {
+              return "Rewelacyjny";
+            }
+
+            if (number > 4) {
+              return "Dobry";
+            }
+
+            if (number > 3) {
+              return "Przecięntny";
+            }
+
+            if (number > 2) {
+              return "Słaby";
+            }
+
+            return "Tragiczny";
+          };
+
+          return {
+            asNumber: parseFloat(averageGrande),
+            intAsString: intiger,
+            decimalAsString: decimal,
+            inWords: degreesInWords(parseFloat(averageGrande)),
+          };
+        };
+
+        return {
+          ...arr,
+          degrees: newArray,
+          averageGrande: averageGrande(),
         };
       };
 
@@ -243,6 +406,7 @@ export const fetchSpecificCategory = (category: string) => async (
       const assessmentNumber = generateAssessmentNumber(peopleWhoBought);
       const availableItemsToBought = getRandomIntInclusive(0, 200);
       const degree = genereteDegree(assessmentNumber);
+      const degreeExpanded = expandDegree(degree);
 
       return {
         ...item,
@@ -257,7 +421,7 @@ export const fetchSpecificCategory = (category: string) => async (
         assessmentNumber,
         availableItemsToBought,
         qualityRatioAsNumber,
-        degree: degree,
+        degree: degreeExpanded,
       };
     });
 

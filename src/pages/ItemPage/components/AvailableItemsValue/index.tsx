@@ -84,7 +84,9 @@ const AvailableItemsValue: React.FC<Props> = ({ item }) => {
   useEffect(() => {
     ifNeededDisableIncrementBtn();
     ifNeededDisableDecrBtn();
-  }, [ifNeededDisableIncrementBtn, ifNeededDisableDecrBtn]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [incrementButtonDisabled, dectrementButtonDisabled]);
 
   return (
     <Styles.Wrapper>

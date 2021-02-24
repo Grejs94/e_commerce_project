@@ -9,47 +9,13 @@ type Props = {
 };
 
 const RightSiteComponentGraphList: React.FC<Props> = ({ item }) => {
-  let degreeArray = [
-    {
-      numberOfDegree: item.degree["degree5"],
-      degreeLVL: "5",
-    },
-    {
-      numberOfDegree: item.degree["degree4"],
-      degreeLVL: "4",
-    },
-    {
-      numberOfDegree: item.degree["degree3"],
-      degreeLVL: "3",
-    },
-    {
-      numberOfDegree: item.degree["degree2"],
-      degreeLVL: "2",
-    },
-    {
-      numberOfDegree: item.degree["degree1"],
-      degreeLVL: "1",
-    },
-  ];
-
-  const expandedDegreeArray = degreeArray.map((degree) => {
-    const OpinonPercentage = Math.floor(
-      (degree.numberOfDegree * 100) / item.assessmentNumber
-    );
-
-    return {
-      ...degree,
-      opinionPercentage: OpinonPercentage,
-    };
-  });
-
   return (
     <Styles.Wrapper>
       <Styles.PaddingContainer>
         <div>
-          {expandedDegreeArray.map((line) => (
-            <Styles.SingleLineGraphContainer key={line.degreeLVL}>
-              <Styles.DegreeASNumber>{line.degreeLVL}</Styles.DegreeASNumber>
+          {item.degree.degrees.map((line) => (
+            <Styles.SingleLineGraphContainer key={line.numbering}>
+              <Styles.DegreeASNumber>{line.numbering}</Styles.DegreeASNumber>
               <Styles.StarContainer>
                 <Styles.StarIcon src="https://assets.allegrostatic.com/metrum/icon/star-full-fdefd1d2d2.svg" />
               </Styles.StarContainer>
@@ -61,7 +27,7 @@ const RightSiteComponentGraphList: React.FC<Props> = ({ item }) => {
               </Styles.HorizontalBarGraphEmpty>
               <Styles.GradesNumberContainer>
                 <Styles.GradesNumberAtThisLevel>
-                  {line.numberOfDegree}
+                  {line.numberRatingsIssued}
                 </Styles.GradesNumberAtThisLevel>
               </Styles.GradesNumberContainer>
             </Styles.SingleLineGraphContainer>

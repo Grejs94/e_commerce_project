@@ -19,7 +19,7 @@ const ProductGraph: React.FC<Props> = ({ item }) => {
     <Styles.Wrapper>
       <Styles.SectionTitle>Opinie o produkcie</Styles.SectionTitle>
       <Styles.BFContainer>
-        <LeftSiteComponentTexts />
+        <LeftSiteComponentTexts item={item} />
         <RightSiteComponentGraphList item={item} />
       </Styles.BFContainer>
     </Styles.Wrapper>

@@ -1,20 +1,26 @@
 import React from "react";
 
+import { IChangedItem } from "interfaces/index";
+
 import * as Styles from "./styles";
 
-type Props = {};
+type Props = {
+  item: IChangedItem;
+};
 
-const LeftSiteComponentTexts: React.FC<Props> = () => {
+const LeftSiteComponentTexts: React.FC<Props> = ({ item }) => {
   return (
     <Styles.Wrapper>
       <Styles.PaddingWithBorderLeftContainer>
-        <Styles.FinalDegreeAsText>Rewelayjny</Styles.FinalDegreeAsText>
+        <Styles.FinalDegreeAsText>
+          {item.degree.averageGrande.inWords}
+        </Styles.FinalDegreeAsText>
         <Styles.AverageDegree>
-          4,84{" "}
+          {`${item.degree.averageGrande.intAsString},${item.degree.averageGrande.decimalAsString}`}
           <Styles.MaxAverageDegreePossible>/5</Styles.MaxAverageDegreePossible>
         </Styles.AverageDegree>
         <Styles.NumberOfDegreeAndReview>
-          31 ocen i 2 recenzji
+          {`${item.degree.sum} ocen`}
         </Styles.NumberOfDegreeAndReview>
       </Styles.PaddingWithBorderLeftContainer>
     </Styles.Wrapper>

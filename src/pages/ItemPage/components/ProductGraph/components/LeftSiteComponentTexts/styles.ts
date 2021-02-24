@@ -18,8 +18,6 @@ export const PaddingWithBorderLeftContainer = styled.div`
   padding: 5px 0;
 `;
 
-export const TextInfoContainer = styled.div``;
-
 export const FinalDegreeAsText = styled.p`
   && {
     margin-bottom: 10px;

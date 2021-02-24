@@ -7,14 +7,24 @@ export interface Item {
   title: string;
 }
 
-interface Idegree {
+type Idegree_degrees = {
+  numberRatingsIssued: number;
+  numbering: number;
+  opinionPercentage: number;
+};
+
+type Idegree_averageGrade = {
+  decimalAsString: string;
+  intAsString: string;
+  asNumber: number;
+  inWords: string;
+};
+
+type IdegreeExpanded = {
   sum: number;
-  degree5: number;
-  degree4: number;
-  degree3: number;
-  degree2: number;
-  degree1: number;
-}
+  degrees: Array<Idegree_degrees>;
+  averageGrande: Idegree_averageGrade;
+};
 
 export interface IChangedItem {
   category: string;
@@ -34,5 +44,5 @@ export interface IChangedItem {
   assessmentNumber: number;
   availableItemsToBought: number;
   qualityRatioAsNumber: number;
-  degree: Idegree;
+  degree: IdegreeExpanded;
 }
